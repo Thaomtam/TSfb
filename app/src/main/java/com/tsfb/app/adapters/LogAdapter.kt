@@ -1,36 +1,42 @@
 package com.tsfb.app.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.tsfb.app.R
+import com.tsfb.app.databinding.ItemLogBinding
 import com.tsfb.app.models.LogEntry
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class LogAdapter : RecyclerView.Adapter<LogAdapter.LogViewHolder>() {
     private var logs = listOf<LogEntry>()
 
-    class LogViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val actionText: TextView = view.findViewById(R.id.action_text)
-        val timestamp: TextView = view.findViewById(R.id.timestamp)
+    class LogViewHolder(private val binding: ItemLogBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+
+        fun bind(log: LogEntry) {
+            binding.actionText.text = log.action
+            binding.timestamp.text = dateFormat.format(Date(log.timestamp))
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_log, parent, false)
-        return LogViewHolder(view)
+        val binding = ItemLogBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return LogViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: LogViewHolder, position: Int) {
-        val log = logs[position]
-        holder.actionText.text = log.action
-        holder.timestamp.text = log.timestamp
+        holder.bind(logs[position])
     }
 
     override fun getItemCount() = logs.size
 
-    fun updateLogs(newLogs: List<LogEntry>) {
+    fun submitList(newLogs: List<LogEntry>) {
         logs = newLogs
         notifyDataSetChanged()
     }
