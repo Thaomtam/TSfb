@@ -2,37 +2,23 @@
 <resources>
     <string name="app_name">TSfb</string>
     
-    <!-- Bottom Navigation -->
-    <string name="nav_dashboard">Tổng quan</string>
-    <string name="nav_post">Bài viết</string>
+    <!-- Navigation -->
     <string name="nav_interaction">Tương tác</string>
     <string name="nav_logs">Nhật ký</string>
     <string name="nav_settings">Cài đặt</string>
-
-    <!-- Settings Screen -->
-    <string name="settings_interaction_speed">Tốc độ tương tác</string>
+    
+    <!-- Auto Interaction -->
+    <string name="auto_start">Bắt đầu</string>
+    <string name="auto_stop">Dừng lại</string>
+    
+    <!-- Logs -->
+    <string name="logs_clear">Xóa nhật ký</string>
+    <string name="logs_export">Xuất nhật ký</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Cài đặt</string>
     <string name="settings_auto_like">Tự động thích</string>
     <string name="settings_auto_comment">Tự động bình luận</string>
     <string name="settings_auto_share">Tự động chia sẻ</string>
-    <string name="settings_comment_templates">Mẫu bình luận</string>
     <string name="settings_save">Lưu cài đặt</string>
-
-    <!-- Dashboard Screen -->
-    <string name="dashboard_stats">Thống kê</string>
-    <string name="dashboard_likes">Lượt thích: %d</string>
-    <string name="dashboard_comments">Bình luận: %d</string>
-    <string name="dashboard_shares">Chia sẻ: %d</string>
-    <string name="dashboard_status">Trạng thái</string>
-    <string name="dashboard_active">Đang hoạt động</string>
-    <string name="dashboard_inactive">Đã dừng</string>
-
-    <!-- Logs Screen -->
-    <string name="logs_empty">Chưa có nhật ký</string>
-    <string name="logs_export">Xuất nhật ký</string>
-    <string name="logs_clear">Xóa nhật ký</string>
-
-    <!-- Auto Interaction Screen -->
-    <string name="auto_start">Bắt đầu tự động</string>
-    <string name="auto_stop">Dừng tự động</string>
-    <string name="auto_status">Trạng thái: %s</string>
 </resources> 
