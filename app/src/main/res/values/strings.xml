@@ -21,4 +21,10 @@
     <string name="settings_auto_comment">Tự động bình luận</string>
     <string name="settings_auto_share">Tự động chia sẻ</string>
     <string name="settings_save">Lưu cài đặt</string>
+    <string name="settings_interaction_speed">Tốc độ tương tác</string>
+    <string name="settings_comment_templates">Mẫu bình luận</string>
+    <string name="settings_speed_slow">Chậm</string>
+    <string name="settings_speed_normal">Bình thường</string>
+    <string name="settings_speed_fast">Nhanh</string>
+    <string name="settings_templates_hint">Mỗi mẫu bình luận một dòng</string>
 </resources> 

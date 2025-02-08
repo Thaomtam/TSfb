@@ -24,37 +24,35 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/settings_interaction_speed"
-                    android:textStyle="bold" />
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
 
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/interaction_speed_slider"
+                <RadioGroup
+                    android:id="@+id/speedRadioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:valueFrom="1"
-                    android:valueTo="10"
-                    android:stepSize="1" />
+                    android:orientation="vertical">
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/auto_like_switch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_auto_like"
-                    android:layout_marginTop="8dp" />
+                    <RadioButton
+                        android:id="@+id/speedSlow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_speed_slow" />
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/auto_comment_switch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_auto_comment"
-                    android:layout_marginTop="8dp" />
+                    <RadioButton
+                        android:id="@+id/speedNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/settings_speed_normal" />
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/auto_share_switch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_auto_share"
-                    android:layout_marginTop="8dp" />
+                    <RadioButton
+                        android:id="@+id/speedFast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_speed_fast" />
+                </RadioGroup>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -72,29 +70,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/settings_comment_templates"
-                    android:textStyle="bold" />
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:hint="@string/settings_templates_hint">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/comment_templates_input"
+                        android:id="@+id/commentTemplates"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nhập mẫu bình luận (mỗi dòng 1 mẫu)"
+                        android:gravity="top"
                         android:inputType="textMultiLine"
-                        android:minLines="3" />
-
+                        android:lines="5" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/save_button"
+            android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_save" />
