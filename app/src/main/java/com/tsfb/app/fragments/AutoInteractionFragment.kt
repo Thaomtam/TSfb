@@ -1,34 +1,50 @@
-private fun checkOverlayPermission() {
-    if (!Settings.canDrawOverlays(requireContext())) {
-        val intent = Intent(
-            Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-            Uri.parse("package:${requireContext().packageName}")
-        )
-        startActivityForResult(intent, OVERLAY_PERMISSION_REQUEST_CODE)
-    } else {
-        startFloatingBubble()
+package com.tsfb.app.fragments
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.tsfb.app.databinding.FragmentAutoInteractionBinding
+import com.tsfb.app.viewmodels.AutoInteractionViewModel
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+class AutoInteractionFragment : Fragment() {
+    private var _binding: FragmentAutoInteractionBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: AutoInteractionViewModel by viewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentAutoInteractionBinding.inflate(inflater, container, false)
+        return binding.root
     }
-}
 
-private fun startFloatingBubble() {
-    val intent = Intent(requireContext(), FloatingBubbleService::class.java)
-    requireContext().startService(intent)
-    requireActivity().moveTaskToBack(true)
-}
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    if (requestCode == OVERLAY_PERMISSION_REQUEST_CODE) {
-        if (Settings.canDrawOverlays(requireContext())) {
-            startFloatingBubble()
+        binding.startButton.setOnClickListener {
+            viewModel.startAutomation()
+        }
+
+        binding.stopButton.setOnClickListener {
+            viewModel.stopAutomation()
+        }
+
+        viewModel.isRunning.observe(viewLifecycleOwner) { isRunning ->
+            binding.startButton.isEnabled = !isRunning
+            binding.stopButton.isEnabled = isRunning
+            binding.statusText.text = if (isRunning) "Đang chạy" else "Đã dừng"
         }
     }
-}
 
-companion object {
-    private const val OVERLAY_PERMISSION_REQUEST_CODE = 100
-}
-
-// Trong onViewCreated, thay đổi click listener của startButton:
-binding.startButton.setOnClickListener {
-    checkOverlayPermission()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 } 
