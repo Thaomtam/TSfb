@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "stats")
 data class StatsEntity(
     @PrimaryKey
-    val id: Long = 1,
-    val likesCount: Int = 0,
-    val commentsCount: Int = 0,
-    val sharesCount: Int = 0,
+    val id: Int = 1,
+    val likes: Int = 0,
+    val comments: Int = 0,
+    val shares: Int = 0,
     val lastUpdated: Long = System.currentTimeMillis()
 ) 

@@ -1,0 +1,41 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    // ... existing config ...
+    
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    // Existing dependencies
+    
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.48"
+    kapt "com.google.dagger:hilt-compiler:2.48"
+    
+    // Room
+    def room_version = "2.6.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
+    
+    // DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    
+    // Moshi
+    implementation "com.squareup.moshi:moshi:1.15.0"
+    ksp "com.squareup.moshi:moshi-kotlin-codegen:1.15.0"
+    
+    // LSPosed
+    compileOnly 'de.robv.android.xposed:api:82'
+    compileOnly 'de.robv.android.xposed:api:82:sources'
+} 

@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class LogEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val message: String,
+    val action: String,
     val timestamp: Long = System.currentTimeMillis()
 ) 
