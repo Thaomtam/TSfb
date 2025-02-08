@@ -4,43 +4,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tsfb.app.data.Settings
-import com.tsfb.app.repository.AppRepository
+import com.tsfb.app.data.AppRepository
+import com.tsfb.app.data.entities.StatsEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val repository: AppRepository
 ) : ViewModel() {
-    private val _settings = MutableLiveData<Settings>()
-    val settings: LiveData<Settings> = _settings
+    private val _stats = MutableLiveData<StatsEntity>()
+    val stats: LiveData<StatsEntity> = _stats
 
-    init {
-        loadSettings()
-    }
-
-    fun saveSettings(
-        interactionSpeed: Int,
-        autoLikeEnabled: Boolean,
-        autoCommentEnabled: Boolean,
-        autoShareEnabled: Boolean,
-        commentTemplates: List<String>
-    ) {
+    fun loadStats() {
         viewModelScope.launch {
-            repository.saveSettings(Settings(
-                interactionSpeed = interactionSpeed,
-                autoLikeEnabled = autoLikeEnabled,
-                autoCommentEnabled = autoCommentEnabled,
-                autoShareEnabled = autoShareEnabled,
-                commentTemplates = commentTemplates
-            ))
-            repository.addLog("Đã cập nhật cài đặt")
+            repository.getStats()?.let {
+                _stats.value = it
+            }
         }
     }
 
-    private fun loadSettings() {
+    fun resetStats() {
         viewModelScope.launch {
-            _settings.value = repository.getSettings()
+            repository.updateStats(0, 0, 0)
+            loadStats()
         }
     }
 } 

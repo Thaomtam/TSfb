@@ -5,34 +5,28 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tsfb.app.data.AppRepository
-import com.tsfb.app.data.entities.LogEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LogsViewModel @Inject constructor(
+class AutoInteractionViewModel @Inject constructor(
     private val repository: AppRepository
 ) : ViewModel() {
-    private val _logs = MutableLiveData<List<LogEntity>>()
-    val logs: LiveData<List<LogEntity>> = _logs
+    private val _isRunning = MutableLiveData<Boolean>()
+    val isRunning: LiveData<Boolean> = _isRunning
 
-    fun loadLogs() {
+    fun startAutomation() {
+        _isRunning.value = true
         viewModelScope.launch {
-            _logs.value = repository.getLogs()
+            repository.addLog("Bắt đầu tự động tương tác")
         }
     }
 
-    fun clearLogs() {
+    fun stopAutomation() {
+        _isRunning.value = false
         viewModelScope.launch {
-            repository.clearLogs()
-            loadLogs()
-        }
-    }
-
-    fun exportLogs() {
-        viewModelScope.launch {
-            // TODO: Implement export functionality
+            repository.addLog("Dừng tự động tương tác")
         }
     }
 } 
