@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/nav_post"
+        android:icon="@drawable/ic_post"
+        android:title="Đăng bài" />
+    <item
+        android:id="@+id/nav_interaction"
+        android:icon="@drawable/ic_interaction"
+        android:title="Tương tác" />
+    <item
+        android:id="@+id/nav_logs"
+        android:icon="@drawable/ic_history"
+        android:title="Nhật ký" />
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Cài đặt" />
+</menu> 
