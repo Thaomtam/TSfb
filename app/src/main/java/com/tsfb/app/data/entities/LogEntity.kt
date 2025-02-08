@@ -1,3 +1,5 @@
+package com.tsfb.app.data.entities
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -5,7 +7,6 @@ import androidx.room.PrimaryKey
 data class LogEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val timestamp: Long,
-    val action: String,
-    val details: String
+    val message: String,
+    val timestamp: Long = System.currentTimeMillis()
 ) 
