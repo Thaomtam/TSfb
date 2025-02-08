@@ -59,6 +59,7 @@ dependencies {
     implementation("com.github.kyuubiran:EzXHelper:1.0.3")
     implementation("org.luckypray:DexKit:1.1.8")
     compileOnly("de.robv.android.xposed:api:82")
+    compileOnly("de.robv.android.xposed:api:82:sources")
     
     // AndroidX Core
     implementation("androidx.core:core-ktx:1.12.0")
