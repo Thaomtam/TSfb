@@ -1,9 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
-    id("kotlin-parcelize")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -16,6 +15,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -84,7 +85,7 @@ dependencies {
     
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
     
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
@@ -94,7 +95,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     
     // Navigation
-    val navVersion = "2.7.6"
+    val navVersion = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     
@@ -110,6 +111,11 @@ dependencies {
     // JSON Parsing
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+
+    // Testing
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
 // Allow references to generated code
