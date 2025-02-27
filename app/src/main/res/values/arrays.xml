@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="xposed_scope">
-        <item>com.facebook.katana</item>
+    <!-- Giá trị mặc định cho RangeSlider độ trễ -->
+    <array name="initial_delay_values">
+        <item>2</item>
+        <item>5</item>
+    </array>
+    
+    <!-- Các loại tác vụ tự động -->
+    <string-array name="automation_task_types">
+        <item>Like bài viết</item>
+        <item>Bình luận bài viết</item>
+        <item>Chia sẻ bài viết</item>
+        <item>Đăng bài</item>
+        <item>Gửi tin nhắn</item>
+        <item>Kết bạn</item>
     </string-array>
+    
+    <!-- Các mức độ nhật ký -->
+    <string-array name="log_levels">
+        <item>DEBUG</item>
+        <item>INFO</item>
+        <item>WARNING</item>
+        <item>ERROR</item>
+    </string-array>
+    
+    <!-- Các màu cho mức độ nhật ký -->
+    <array name="log_level_colors">
+        <item>@color/gray</item>
+        <item>@color/primary</item>
+        <item>@color/accent</item>
+        <item>@color/error</item>
+    </array>
+    
+    <!-- Các khoảng thời gian chạy -->
+    <string-array name="schedule_intervals">
+        <item>Mỗi giờ</item>
+        <item>Mỗi 2 giờ</item>
+        <item>Mỗi 4 giờ</item>
+        <item>Mỗi 6 giờ</item>
+        <item>Mỗi 12 giờ</item>
+        <item>Mỗi ngày</item>
+    </string-array>
+    
+    <!-- Các giá trị thời gian tương ứng (phút) -->
+    <integer-array name="schedule_interval_values">
+        <item>60</item>
+        <item>120</item>
+        <item>240</item>
+        <item>360</item>
+        <item>720</item>
+        <item>1440</item>
+    </integer-array>
 </resources> 
